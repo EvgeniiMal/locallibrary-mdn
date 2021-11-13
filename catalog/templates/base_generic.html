@@ -32,7 +32,10 @@
                 {% if perms.catalog.can_mark_returned  %}
                     <hr>
                     <p>Staff</p>
-                    <a href="{% url 'borrowed' %}">All borrowed</a>
+                    <ul class="sidebar-nav">
+                        <li><a href="{% url 'borrowed' %}">All borrowed</a></li>
+                        <li><a href="{% url 'author-create'%}">Create author</a></li>
+                    </ul>
                 {% endif %} 
             {% endblock %}
         </div>

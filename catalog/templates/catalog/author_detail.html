@@ -6,6 +6,14 @@
         {{ author.date_of_death }}
     {% endif %} </p>
 
+    {% if perms.catalog.change_author %}
+        <a role="button" class="btn btn-primary" href="{% url 'author-update' pk=author.pk %}">Update author info</a>
+    {% endif %}
+
+    {% if perms.catalog.delete_author  %}
+        <a role="button" class="btn btn-danger" href="{% url 'author-delete' pk=author.pk %}">Delete author</a>
+    {% endif %}
+
     <div style="margin-left:20px;margin-top:20px">
         <h4>Books</h4>
         {% for book in author.book_set.all %}
