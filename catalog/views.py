@@ -36,24 +36,6 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 
-class BookListView(ListView):
-    model = Book
-    paginate_by = 10
-
-
-class BookDetailView(DetailView):
-    model = Book
-
-
-class AuthorListView(ListView):
-    model = Author
-    paginate_by = 10
-
-
-class AuthorDetailView(DetailView):
-    model = Author
-
-
 class LoanedBooksByUserListView(LoginRequiredMixin, ListView):
     model = BookInstance
     template_name = 'catalog/bookinstance_list_borrowed_user.html'
@@ -108,6 +90,15 @@ def renew_book_librarian(request, pk):
     return render(request, 'catalog/book_renew_librarian.html', context)
 
 
+class AuthorListView(ListView):
+    model = Author
+    paginate_by = 10
+
+
+class AuthorDetailView(DetailView):
+    model = Author
+
+
 class AuthorCreate(CreateView):
     model = Author
     fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
@@ -122,3 +113,27 @@ class AuthorUpdate(UpdateView):
 class AuthorDelete(DeleteView):
     model = Author
     success_url = reverse_lazy('authors')
+
+
+class BookListView(ListView):
+    model = Book
+    paginate_by = 10
+
+
+class BookDetailView(DetailView):
+    model = Book
+
+
+class BookCreate(CreateView):
+    model = Book
+    fields = ['title', 'author', 'summary', 'isbn', 'language', 'genre']
+
+
+class BookUpdate(UpdateView):
+    model = Book
+    fields = '__all__'
+
+
+class BookDelete(DeleteView):
+    model = Book
+    success_url = reverse_lazy('books')
