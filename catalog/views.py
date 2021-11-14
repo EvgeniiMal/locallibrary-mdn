@@ -20,8 +20,8 @@ def index(request):
     request.session['num_visits'] = num_visits + 1
 
     num_instances_available = BookInstance.objects.filter(status__exact='a').count()
-    num_books_with_word_available = Book.objects.filter(title__contains='the').count()
-    num_genres_with_word_available = Genre.objects.filter(name__contains='horror').count()
+    num_books_with_word_available = Book.objects.filter(title__icontains='the').count()
+    num_genres_with_word_available = Genre.objects.filter(name__icontains='horror').count()
 
     context = {
         'num_books': num_books,
