@@ -103,7 +103,7 @@ class AuthorCreate(PermissionRequiredMixin, CreateView):
     model = Author
     fields = ['first_name', 'last_name', 'date_of_birth', 'date_of_death']
     initial = {'date_of_death': '11/06/2020'}
-    permission_required = 'catalog.create_author'
+    permission_required = 'catalog.add_author'
 
 
 class AuthorUpdate(PermissionRequiredMixin, UpdateView):
@@ -130,7 +130,7 @@ class BookDetailView(DetailView):
 class BookCreate(PermissionRequiredMixin, CreateView):
     model = Book
     fields = ['title', 'author', 'summary', 'isbn', 'language', 'genre']
-    permission_required = 'catalog.create_book'
+    permission_required = 'catalog.add_book'
 
 
 class BookUpdate(PermissionRequiredMixin, UpdateView):
