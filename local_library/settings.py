@@ -26,7 +26,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = [].append(os.environ.get('ALLOWED_HOSTS', 'localhost'))
+HEROKU_HOST = os.environ.get('HEROKU_HOST', '')
+
+ALLOWED_HOSTS = ['localhost', HEROKU_HOST]
 
 # Application definition
 
